@@ -1,14 +1,42 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
+import Guessing from './component/Guessing';
+import Login from './component/Login';
 
-const [state, setState] = useState()
+
 class App extends React.Component {
-    componentDidLoad() {
-        
-    }
     constructor(props) {
         super(props);
-        this.state = {token: ""}
+        this.state = {
+            token: "",
+            pages: "login"
+        }
+        this.setToken = this.setToken.bind(this);
+        this.setPage = this.setPage.bind(this);
+    }
+
+    setPage(pages) {
+        this.setState({ pages: pages })
+    }
+
+    setToken(data) {
+        this.setState({ token: data })
+    }
+
+    render() {
+        if (this.state.pages === "login") {
+            return (
+                <div className='App'>
+                    <Login setToken={this.setToken} setPage={this.setPage} />
+                </div>);
+        }
+        else if (this.state.pages === "guessing") {
+            return (
+                <div>
+                    <Guessing state={this.state} setPage={this.setPage} setToken={this.setToken} />
+                </div>
+            )
+        }
     }
 }
 

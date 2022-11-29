@@ -32,11 +32,13 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
-.Container {
+
+.Login {
   margin: 10%;
-  background-color: rgba(237, 49, 146, 0.8);
+  align-items: center;
 }
